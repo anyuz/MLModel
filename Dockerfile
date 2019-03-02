@@ -1,6 +1,7 @@
 FROM python:3.7.2-slim
 
-RUN apt install libgomp
+RUN apt update
+RUN apt install libgomp1
 
 WORKDIR /app
 COPY . /app
