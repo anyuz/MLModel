@@ -12,14 +12,14 @@ pipeline {
     stages{
         stage('Download requirements'){
             steps{
-                apt update
-                apt install libgomp1
-                pip install -r requirements.txt
+                sh 'apt update'
+                sh 'apt install libgomp1'
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('Run model') {
             steps{
-                python model.py --mongodb ${MONGODB_URL} --user ${MONGODB_USER} --password ${MONGODB_PASSWORD} --datapath /data
+                sh 'python model.py --mongodb ${MONGODB_URL} --user ${MONGODB_USER} --password ${MONGODB_PASSWORD} --datapath /data'
             }
         }
     }
