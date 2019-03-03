@@ -40,10 +40,11 @@ for key in ['train.csv', 'test.csv', 'historical_transactions.csv', 'merchants.c
 
 # main
 client = pymongo.MongoClient("mongodb://%s:%s@%s"%(arg.user, arg.password, arg.mongodb))
-db = client['model']
+dbs = client['model']
+db= dbs.model
 warnings.simplefilter(action='ignore', category=SettingWithCopyWarning)
 warnings.simplefilter(action='ignore', category=FutureWarning)
-db.model.insertOne({'model':'model'+ str(currentDT), 'accuracy': 4.0})
+db.accuracy.insertOne({'model':'model'+ str(currentDT), 'accuracy': 4.0})
 print(db.accuracy.find({}))
 FEATS_EXCLUDED = ['first_active_month', 'target', 'card_id', 'outliers',
                   'hist_purchase_date_max', 'hist_purchase_date_min', 'hist_card_id_size',
