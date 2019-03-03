@@ -2,7 +2,7 @@ pipeline {
 
     agent {
         kubernetes {
-        label 'jenkinspod'
+        label 'jenkinspod-1'
         defaultContainer 'jnlp'
         yaml """
 apiVersion: v1
