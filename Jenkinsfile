@@ -4,7 +4,7 @@ pipeline {
         kubernetes {
         label 'jenkinspod'
         defaultContainer 'jnlp'
-        yamlfile 'k8spod.yaml'
+        yamlFile 'k8spod.yaml'
         }
     }
 
