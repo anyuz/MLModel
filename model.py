@@ -43,11 +43,11 @@ client = pymongo.MongoClient("mongodb://%s:%s@%s"%(arg.user, arg.password, arg.m
 db = client["model"]
 print(db)
 accuracy = db.accuracy
-print(accuracy)
+#print(accuracy)
 warnings.simplefilter(action='ignore', category=SettingWithCopyWarning)
 warnings.simplefilter(action='ignore', category=FutureWarning)
-accuracy.insert({'model':'model'+ str(currentDT), 'accuracy': 4.0})
-print(accuracy.find({}))
+#accuracy.insert({'model':'model'+ str(currentDT), 'accuracy': 4.0})
+#print(accuracy.find({}))
 
 FEATS_EXCLUDED = ['first_active_month', 'target', 'card_id', 'outliers',
                   'hist_purchase_date_max', 'hist_purchase_date_min', 'hist_card_id_size',
@@ -550,7 +550,8 @@ def main(debug=False):
         kfold_lightgbm(train_df, test_df, num_folds=2, stratified=False, debug=debug)
     # insert results to database
     # db.accuracyround.insertOne({ model: "model"+str(avg(predictresults)), Fold100: predictresults[0], Fold200: predictresults[1], Fold300: predictresults[2], Fold400: predictresults[3], Fold500: predictresults[4], Fold600: predictresults[5], Fold700: predictresults[6], Fold800: predictresults[7],Fold900: predictresults[8], Fold1000: predictresults[9]})
-    db.accuracy.insertOne({ model: "model"+str(currentDT), accuracy: predictresults[0]})
+    accuracy.insert({"model":"model"+ str(currentDT), "accuracy": predictresults[0]})
+    
 
 if __name__ == "__main__":
     with timer("Full model run"):
