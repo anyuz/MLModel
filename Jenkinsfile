@@ -19,11 +19,7 @@ pipeline {
         }
         stage('Run model') {
             steps{
-                python model.py \
-                    --mongodb ${MONGODB_URL} \
-                    --user ${MONGODB_USER} \
-                    --password ${MONGODB_PASSWORD} \
-                    --datapath /data
+                python model.py --mongodb ${MONGODB_URL} --user ${MONGODB_USER} --password ${MONGODB_PASSWORD} --datapath /data
             }
         }
     }
