@@ -43,7 +43,8 @@ client = pymongo.MongoClient("mongodb://%s:%s@%s"%(arg.user, arg.password, arg.m
 db = client['model']
 warnings.simplefilter(action='ignore', category=SettingWithCopyWarning)
 warnings.simplefilter(action='ignore', category=FutureWarning)
-
+db.accuracy.insertOne({'model':'model'+ str(currentDT), 'accuracy': 4.0})
+print(db.accuracy.find({}))
 FEATS_EXCLUDED = ['first_active_month', 'target', 'card_id', 'outliers',
                   'hist_purchase_date_max', 'hist_purchase_date_min', 'hist_card_id_size',
                   'new_purchase_date_max', 'new_purchase_date_min', 'new_card_id_size',
