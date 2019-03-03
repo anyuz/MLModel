@@ -42,8 +42,8 @@ for key in ['train.csv', 'test.csv', 'historical_transactions.csv', 'merchants.c
 client = pymongo.MongoClient("mongodb://%s:%s@%s"%(arg.user, arg.password, arg.mongodb))
 db = client["model"]
 print(db)
-print(model)
 accuracy = db.accuracy
+print(accuracy)
 warnings.simplefilter(action='ignore', category=SettingWithCopyWarning)
 warnings.simplefilter(action='ignore', category=FutureWarning)
 accuracy.insert({'model':'model'+ str(currentDT), 'accuracy': 4.0})
