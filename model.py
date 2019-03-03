@@ -42,12 +42,11 @@ for key in ['train.csv', 'test.csv', 'historical_transactions.csv', 'merchants.c
 client = pymongo.MongoClient("mongodb://%s:%s@%s"%(arg.user, arg.password, arg.mongodb))
 db = client["model"]
 print(db)
-model = db.model
 print(model)
-accuracy = model.accuracy
+accuracy = db.accuracy
 warnings.simplefilter(action='ignore', category=SettingWithCopyWarning)
 warnings.simplefilter(action='ignore', category=FutureWarning)
-accuracy.insertOne({'model':'model'+ str(currentDT), 'accuracy': 4.0})
+accuracy.insert({'model':'model'+ str(currentDT), 'accuracy': 4.0})
 print(accuracy.find({}))
 
 FEATS_EXCLUDED = ['first_active_month', 'target', 'card_id', 'outliers',
