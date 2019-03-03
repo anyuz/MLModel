@@ -2,7 +2,7 @@ pipeline {
 
     agent {
         kubernetes {
-        label 'jenkinspod-1'
+        label 'jenkins-slave'
         defaultContainer 'jnlp'
         yaml """
 apiVersion: v1
@@ -58,14 +58,18 @@ spec:
     stages{
         stage('Download requirements'){
             steps{
-                sh 'apt update'
-                sh 'apt install libgomp1'
-                sh 'pip install -r requirements.txt'
+                container('python'){
+                    sh 'apt update'
+                    sh 'apt install libgomp1'
+                    sh 'pip install -r requirements.txt'
+                }
             }
         }
         stage('Run model') {
             steps{
-                sh 'python model.py --mongodb ${MONGODB_URL} --user ${MONGODB_USER} --password ${MONGODB_PASSWORD} --datapath /data'
+                container('python'){
+                    sh 'python model.py --mongodb ${MONGODB_URL} --user ${MONGODB_USER} --password ${MONGODB_PASSWORD} --datapath /data'
+                }
             }
         }
     }
