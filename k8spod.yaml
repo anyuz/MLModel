@@ -4,9 +4,16 @@ metadata:
   labels:
     some-label: some-label-value
 spec:
+  volumes:
+  - name: traindata
+    persistentVolumeClaim:
+      claimName: traindata
   containers:
   - name: python
     image: python:3.7.2-slim
+    volumeMounts:
+    - name: traindata
+      mountPath: /data
     env:
     - name: MONGODB_URL
       valueFrom:
