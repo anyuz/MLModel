@@ -62,6 +62,14 @@ spec:
                     sh 'apt update'
                     sh 'apt install libgomp1'
                     sh 'pip install -r requirements.txt'
+                    sh 'pip install -U pytest'
+                }
+            }
+        }
+        stage('pytest') {
+            steps{
+                container('python'){
+                    sh 'py.test model.py --junitxml=pytest_report.xml'
                 }
             }
         }
@@ -72,6 +80,8 @@ spec:
                 }
             }
         }
+        
+        stage('publish docker image')
     }
     
 }
