@@ -69,7 +69,7 @@ spec:
         stage('pytest') {
             steps{
                 container('python'){
-                    sh 'py.test model.py --junitxml=pytest_report.xml'
+                    sh 'py.test update.py --junitxml=pytest_report.xml'
                 }
             }
         }
@@ -83,7 +83,7 @@ spec:
         stage('publish image'){
             steps{
                 container('python'){
-                    sh 'py.test model.py --junitxml=pytest_report.xml'
+                    sh 'py.test update.py --junitxml=pytest_report.xml'
                 }
             }
         }
