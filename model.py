@@ -50,10 +50,11 @@ client = pymongo.MongoClient("mongodb://%s:%s@%s"%(arg.user, arg.password, arg.m
 db = client["model"]
 print(db)
 accuracy = db.accuracy
-accuracydata = []
-for item in accuracy:
-    accuracydata.append(item['accuracy'])
-old_accuracy = accuracydata[-1]
+accuracydata = accuracy.find({})
+accuracydatalist = []
+for item in accuracydata:
+    accuracydatalist.append(item['accuracy'])
+old_accuracy = accuracydatalist[-1]
 #print(accuracy)
 warnings.simplefilter(action='ignore', category=SettingWithCopyWarning)
 warnings.simplefilter(action='ignore', category=FutureWarning)
