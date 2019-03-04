@@ -496,7 +496,7 @@ def kfold_lightgbm(train_df, test_df, num_folds, stratified = False, debug= Fals
                 'metric': 'rmse',
                 'learning_rate': 0.01,
                 'subsample': 0.9855232997390695,
-                'max_depth': 6,
+                'max_depth': 8,
                 'top_rate': 0.9064148448434349,
                 'num_leaves': 63,
                 'min_child_weight': 41.9612869171337,
