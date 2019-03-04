@@ -18,14 +18,18 @@ import botocore
 import datetime
 
 currentDT = datetime.datetime.now()
+text_file = open("results.txt", "w")
+text_file.write(str(4.4))
+text_file.write(str(4.3))
+text_file.close()
 # # pytest functions
 # def func(x):
 #     return x + 1
 
 # def test_answer():
 #     assert func(3) == 4
-with open('results.txt','w') as fd:
-        fd.write(str(4.5))
+# with open('results.txt','w') as fd:
+#         fd.write(str(4.5))
 # argument
 parser = argparse.ArgumentParser(description="training model")
 parser.add_argument("--mongodb")
@@ -564,10 +568,10 @@ def main(debug=False):
     # insert results to database
     # db.accuracyround.insertOne({ model: "model"+str(avg(predictresults)), Fold100: predictresults[0], Fold200: predictresults[1], Fold300: predictresults[2], Fold400: predictresults[3], Fold500: predictresults[4], Fold600: predictresults[5], Fold700: predictresults[6], Fold800: predictresults[7],Fold900: predictresults[8], Fold1000: predictresults[9]})
     accuracy.insert({"model":"model"+ str(currentDT), "accuracy": predictresults[0]})
-    with open('results.txt','w') as fd:
-        fd.write(str(old_accuracy))
-        fd.write(str(predictresults[0]))
-    
+    text_file = open("results.txt", "w")
+    text_file.write(str(old_accuracy))
+    text_file.write(str(predictresults[0]))
+    text_file.close()
 
 if __name__ == "__main__":
     with timer("Full model run"):
