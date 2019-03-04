@@ -24,7 +24,7 @@ currentDT = datetime.datetime.now()
 
 # def test_answer():
 #     assert func(3) == 4
-with open('results.txt','a') as fd:
+with open('results.txt','w') as fd:
         fd.write(str(4.5))
 # argument
 parser = argparse.ArgumentParser(description="training model")
