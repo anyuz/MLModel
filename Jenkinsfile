@@ -81,7 +81,7 @@ spec:
             }
         }
         
-        stage('publish docker image')
+        stage('publish docker image'){}
     }
     
 }
