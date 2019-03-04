@@ -80,10 +80,11 @@ spec:
                 }
             }
         }
-        stage('publish image'){
+        
+        stage('accuracy-test'){
             steps{
                 container('python'){
-                    sh 'py.test update.py --junitxml=pytest_report.xml'
+                    sh 'py.test accuracy.py --junitxml=pytest_report.xml'
                 }
             }
         }
