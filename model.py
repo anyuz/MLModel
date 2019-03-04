@@ -18,6 +18,12 @@ import botocore
 import datetime
 
 currentDT = datetime.datetime.now()
+# pytest functions
+def func(x):
+    return x + 1
+
+def test_answer():
+    assert func(3) == 4
 
 # argument
 parser = argparse.ArgumentParser(description="training model")
