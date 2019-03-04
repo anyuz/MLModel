@@ -80,8 +80,12 @@ spec:
                 }
             }
         }
-        
-        stage('publish docker image'){}
+        stage('publish image'){
+            steps{
+                container('python'){
+                    sh 'py.test model.py --junitxml=pytest_report.xml'
+                }
+            }
+        }
     }
-    
 }
