@@ -26,14 +26,14 @@ def test_mytest():
 # file.write("Testing Accuracy {}".format(knn.score(X_test, Y_test)))
 
 # read mongodb accuracy
-client = pymongo.MongoClient("mongodb://readonlyuser:m5MgB3iD4T0SeltE@cluster0-shard-00-00-xsyvp.mongodb.net:27017,cluster0-shard-00-01-xsyvp.mongodb.net:27017,cluster0-shard-00-02-xsyvp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true")
-db = client["myNewdatabase"]
-mycol = db['accuracy']
-accuracy = mycol.find({})
-accuracydata = []
-for x in accuracy:
-    accuracydata.append(x['accuracy'])
+# client = pymongo.MongoClient("mongodb://readonlyuser:m5MgB3iD4T0SeltE@cluster0-shard-00-00-xsyvp.mongodb.net:27017,cluster0-shard-00-01-xsyvp.mongodb.net:27017,cluster0-shard-00-02-xsyvp.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true")
+# db = client["myNewdatabase"]
+# mycol = db['accuracy']
+# accuracy = mycol.find({})
+# accuracydata = []
+# for x in accuracy:
+#     accuracydata.append(x['accuracy'])
 
-# test RMSE accuracy < bar value if yes publish docker image
-def test_answer():
-    assert accuracydata[-1]<= 4
+# # test RMSE accuracy < bar value if yes publish docker image
+# def test_answer():
+#     assert accuracydata[-1]<= 4
